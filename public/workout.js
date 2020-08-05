@@ -1,3 +1,4 @@
+//const moment = require("moment");
 async function initWorkout() {
   const lastWorkout = await API.getLastWorkout();
   console.log("Last workout:", lastWorkout);
@@ -5,12 +6,12 @@ async function initWorkout() {
     document
       .querySelector("a[href='/exercise?']")
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
-
+    console.log("last workout", lastWorkout)
     const workoutSummary = {
-      date: formatDate(lastWorkout.day),
+      date: formatDate(lastWorkout.date),
       totalDuration: lastWorkout.totalDuration,
-      numExercises: lastWorkout.exercises.length,
-      ...tallyExercises(lastWorkout.exercises)
+      numExercises: lastWorkout.allExercises.length,
+      ...tallyExercises(lastWorkout.allExercises)
     };
 
     renderWorkoutSummary(workoutSummary);
