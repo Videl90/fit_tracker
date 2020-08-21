@@ -12,9 +12,8 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
+mongoose.connect(process.env.MONGODB_URI || "mongodb://Videl90:lorenasantos90@ds031802.mlab.com:31802/heroku_6t755l3d", {
+  useMongoClient: true
 });
 
 app.use(require("./routes/html-routes"));
